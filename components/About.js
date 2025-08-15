@@ -56,7 +56,7 @@ export default function About() {
             </motion.a>
 
             <motion.a
-              href="/Jack_CV.pdf"
+              href="/CV.pdf"
               download
               className="px-6 py-3 rounded-2xl border border-[#333] bg-[#111]/50 backdrop-blur-sm hover:border-blue-500/50 hover:bg-[#222]/50 transition-all duration-300 text-center hover:shadow-lg transform hover:-translate-y-1"
               whileHover={{ scale: 1.05 }}

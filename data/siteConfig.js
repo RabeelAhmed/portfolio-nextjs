@@ -32,8 +32,8 @@ const siteConfig = {
     phone: '+92 308 4739209',
     email: 'rabeelsulehria3@gmail.com',
     social: [
-      { name: 'LinkedIn', link: '#' },
-      { name: 'GitHub', link: 'https://github.com/RabeelAhmed' }
+      { name: 'LinkedIn', link: 'https://www.linkedin.com/in/rabeel-ahmed-b1823b2b2/' },
+      { name: 'GitHub', link: 'https://github.com/RabeelAhmed/RabeelAhmed/tree/main' }
     ]
   }
 }
