@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import siteConfig from '../data/siteConfig'
 import { motion, AnimatePresence } from 'framer-motion'
 import * as SiIcons from 'react-icons/si'
+import * as VscIcons from 'react-icons/vsc'
 
 export default function Skills() {
   const [tab, setTab] = useState('skills')
+
+  const currentItems = useMemo(() => {
+    return tab === 'skills' ? siteConfig.skills.list : siteConfig.skills.tools
+  }, [tab])
   
   return (
     <section id="skills" className="py-24 relative overflow-hidden">
@@ -41,30 +46,36 @@ export default function Skills() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 min-h-[300px]">
-          <AnimatePresence mode="wait">
-            {(tab === 'skills' ? siteConfig.skills.list : siteConfig.skills.tools).map((s, idx) => {
-              const Icon = SiIcons[s.icon]
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={tab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 min-h-[300px]"
+          >
+            {currentItems.map((s, idx) => {
+              const Icon = SiIcons[s.icon] || VscIcons[s.icon]
               return (
                 <motion.div 
-                  key={`${tab}-${s.name}`} 
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }} 
-                  animate={{ opacity: 1, scale: 1, y: 0 }} 
-                  exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  key={s.name} 
+                  initial={{ opacity: 0, scale: 0.9 }} 
+                  animate={{ opacity: 1, scale: 1 }} 
+                  transition={{ duration: 0.2, delay: idx * 0.03 }}
                   className="glass p-6 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-accent/40 hover:bg-white/5 transition-all group cursor-default"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                  <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500 flex-shrink-0">
                     {Icon ? <Icon size={32} /> : <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />}
                   </div>
-                  <span className="text-sm font-bold text-gray-300 group-hover:text-white transition-colors">
+                  <span className="text-sm font-bold text-gray-300 group-hover:text-white transition-colors text-center break-words max-w-full">
                     {s.name}
                   </span>
                 </motion.div>
               )
             })}
-          </AnimatePresence>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   )

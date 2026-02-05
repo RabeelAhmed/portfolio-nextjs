@@ -19,7 +19,8 @@ export default function About() {
               <Image
                 src="/profile.png"
                 fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                 alt="Rabeel Ahmed"
               />
             </div>

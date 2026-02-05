@@ -77,6 +77,7 @@ export default function Hero() {
                   src="/profile.png"
                   alt="Rabeel Ahmed"
                   fill
+                  sizes="(max-width: 768px) 300px, 450px"
                   className="object-cover object-top"
                   priority
                 />
@@ -90,7 +91,7 @@ export default function Hero() {
               transition={{ duration: 4, repeat: Infinity }}
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500 font-bold">8+</div>
+                <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500 font-bold">12+</div>
                 <div className="text-xs">
                   <p className="text-white font-bold">Projects</p>
                   <p className="text-gray-400">Completed</p>
@@ -104,7 +105,7 @@ export default function Hero() {
               transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-500 font-bold">2+</div>
+                <div className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-500 font-bold">3+</div>
                 <div className="text-xs">
                   <p className="text-white font-bold">Years</p>
                   <p className="text-gray-400">Experience</p>
