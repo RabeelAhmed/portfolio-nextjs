@@ -16,8 +16,24 @@ const siteConfig = {
     paragraph: 'I am a passionate web developer with over two years of experience in building full-stack applications using the MERN stack, and SQL/NoSQL databases. My work ranges from travel platforms with AI recommendations to secure role-based login systems and real-time features. I focus on creating applications that are not only visually appealing but also secure, scalable, and optimized for performance.'
   },
   skills: {
-    list: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Bootstrap', 'Tailwind CSS', 'Git'],
-    tools: ['VSCode', 'Postman', 'GitHub', 'Npm', 'MongoDB', 'SQL Developer']
+    list: [
+      { name: 'HTML', icon: 'SiHtml5' },
+      { name: 'CSS', icon: 'SiCss3' },
+      { name: 'JavaScript', icon: 'SiJavascript' },
+      { name: 'React', icon: 'SiReact' },
+      { name: 'Next.js', icon: 'SiNextdotjs' },
+      { name: 'Bootstrap', icon: 'SiBootstrap' },
+      { name: 'Tailwind CSS', icon: 'SiTailwindcss' },
+      { name: 'Git', icon: 'SiGit' }
+    ],
+    tools: [
+      { name: 'VSCode', icon: 'SiVisualstudiocode' },
+      { name: 'Postman', icon: 'SiPostman' },
+      { name: 'GitHub', icon: 'SiGithub' },
+      { name: 'Npm', icon: 'SiNpm' },
+      { name: 'MongoDB', icon: 'SiMongodb' },
+      { name: 'SQL Developer', icon: 'SiMysql' }
+    ]
   },
   portfolio: [
     { id: 1, title: 'Asteroid Explorer', image: '/portfolio1.png', link: 'https://github.com/RabeelAhmed/asteroid-explorer' },

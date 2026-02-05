@@ -1,4 +1,3 @@
-// Enhanced Stats Component
 import { FaClock, FaTasks, FaSmile } from 'react-icons/fa'
 import siteConfig from '../data/siteConfig'
 import { motion } from 'framer-motion'
@@ -17,32 +16,29 @@ const icons = {
   FaProjectDiagram 
 }
 
-
 export default function Stats(){
   return (
-    <section className="py-16 relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/10 via-purple-900/5 to-blue-900/10 pointer-events-none"></div>
-      
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+    <section className="py-12 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
         {siteConfig.stats.map((s, index) => {
           const Icon = icons[s.icon] || FaClock
           return (
             <motion.div 
               key={s.id} 
-              className="card bg-[#111]/30 backdrop-blur-sm border border-[#333]/50 hover:border-blue-500/30 hover:bg-[#111]/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/10 group"
-              initial={{opacity:0, y:30, scale:0.9}} 
-              whileInView={{opacity:1, y:0, scale:1}} 
-              transition={{duration:0.6, delay:index * 0.1}}
-              viewport={{once: true}}
-              whileHover={{y: -8, scale: 1.02}}
+              className="glass p-8 rounded-3xl border border-white/5 hover:border-accent/30 transition-all duration-500 group"
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
-              <div className="flex items-center gap-6 p-6">
-                <div className="p-4 rounded-xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-500/20 group-hover:from-blue-600/30 group-hover:to-purple-600/30 group-hover:border-blue-500/40 transition-all duration-300">
-                  <Icon size={28} className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
+              <div className="flex flex-col items-center text-center gap-4">
+                <div className="p-4 rounded-2xl bg-accent/5 text-accent group-hover:bg-accent/10 transition-colors">
+                  <Icon size={24} />
                 </div>
                 <div>
-                  <p className="text-xl font-bold group-hover:text-blue-400 transition-colors duration-300">
-                    {s.title}
+                  <h3 className="text-sm font-medium text-gray-400 mb-1">{s.title.split(' ').slice(1).join(' ')}</h3>
+                  <p className="text-3xl font-bold text-white tracking-tight">
+                    {s.title.split(' ')[0]}
                   </p>
                 </div>
               </div>

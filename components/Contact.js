@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import siteConfig from '../data/siteConfig'
 import { motion } from 'framer-motion'
+import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi'
 
 export default function Contact() {
   const [status, setStatus] = useState(null)
@@ -19,13 +20,8 @@ export default function Contact() {
       message: form.get('message')
     };
 
-    // Log the data being sent (for debugging)
-    console.log('Sending data:', formData);
-
     try {
-      // Call your Next.js API route instead of Google Apps Script directly
       const res = await fetch('/api/contact', {
-
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,154 +30,132 @@ export default function Contact() {
       });
 
       const result = await res.json();
-      console.log('API response:', result);
 
       if (res.ok && result.status === 'success') {
         setStatus('SUCCESS');
-        e.target.reset(); // Reset form on success
+        e.target.reset();
       } else {
-        console.error('API error:', result.message);
         setStatus('ERROR');
       }
-      
     } catch (error) {
-      console.error('Network error:', error);
       setStatus('ERROR');
     } finally {
       setLoading(false);
     }
   }
 
-  return (
-    <section id="contact" className="py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-transparent to-purple-900/10 pointer-events-none"></div>
-      
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 relative z-10">
-        <motion.div
-          initial={{opacity:0, x:-50}} 
-          whileInView={{opacity:1, x:0}} 
-          transition={{duration:0.8}}
-          viewport={{once: true}}
-        >
-          <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-8">
-            Have You Any Project? Please Drop a Message
-          </h3>
+  const contactInfo = [
+    { icon: <FiMapPin />, label: 'Location', value: siteConfig.contact.address },
+    { icon: <FiPhone />, label: 'Phone', value: siteConfig.contact.phone },
+    { icon: <FiMail />, label: 'Email', value: siteConfig.contact.email },
+  ]
 
-          <div className="space-y-6 text-gray-300">
-            <motion.div 
-              className="flex items-center gap-4 p-4 rounded-lg bg-[#111]/30 backdrop-blur-sm border border-[#333]/50 hover:border-blue-500/30 transition-all duration-300"
-              whileHover={{scale: 1.02}}
-            >
-              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-              {siteConfig.contact.address}
-            </motion.div>
-            
-            <motion.div 
-              className="flex items-center gap-4 p-4 rounded-lg bg-[#111]/30 backdrop-blur-sm border border-[#333]/50 hover:border-green-500/30 transition-all duration-300"
-              whileHover={{scale: 1.02}}
-            >
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              {siteConfig.contact.phone}
-            </motion.div>
-            
-            <motion.div 
-              className="flex items-center gap-4 p-4 rounded-lg bg-[#111]/30 backdrop-blur-sm border border-[#333]/50 hover:border-purple-500/30 transition-all duration-300"
-              whileHover={{scale: 1.02}}
-            >
-              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-              {siteConfig.contact.email}
-            </motion.div>
-            
-            <div className="flex gap-4 mt-6 flex-wrap">
-              {siteConfig.contact.social.map((s,i)=> (
-                <motion.a 
-                  key={i} 
-                  href={s.link} 
-                  className="px-4 py-2 rounded-full bg-[#111]/50 border border-[#333]/50 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
-                  whileHover={{scale: 1.1, y: -2}}
-                  whileTap={{scale: 0.95}}
-                >
-                  {s.name}
-                </motion.a>
+  return (
+    <section id="contact" className="py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-5 gap-16">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2"
+          >
+            <span className="text-accent font-bold tracking-widest text-sm uppercase mb-4 block">Contact</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Let&apos;s Create <br /> <span className="text-gradient">Something Great</span></h2>
+            <p className="text-gray-400 text-lg mb-12">
+              Have a project in mind or just want to say hi? Feel free to reach out. I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+            </p>
+
+            <div className="space-y-6">
+              {contactInfo.map((info, idx) => (
+                <div key={idx} className="flex items-center gap-6 group">
+                  <div className="w-14 h-14 rounded-2xl glass flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                    {info.icon}
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">{info.label}</p>
+                    <p className="text-white font-medium">{info.value}</p>
+                  </div>
+                </div>
               ))}
             </div>
-          </div>
-        </motion.div>
 
-        <motion.form 
-          onSubmit={handleSubmit} 
-          className="space-y-6"
-          initial={{opacity:0, x:50}} 
-          whileInView={{opacity:1, x:0}} 
-          transition={{duration:0.8, delay:0.2}}
-          viewport={{once: true}}
-        >
-          <div className="space-y-6">
-            <motion.input 
-              name="name" 
-              required 
-              placeholder="Your name" 
-              className="w-full p-4 rounded-2xl bg-[#0b0b0b]/80 backdrop-blur-sm border border-[#333]/50 focus:border-blue-500/70 focus:bg-[#111]/80 transition-all duration-300 focus:outline-none"
-              whileFocus={{scale: 1.02}}
-            />
-            
-            <motion.input 
-              name="email" 
-              type="email" 
-              required 
-              placeholder="Your email" 
-              className="w-full p-4 rounded-2xl bg-[#0b0b0b]/80 backdrop-blur-sm border border-[#333]/50 focus:border-blue-500/70 focus:bg-[#111]/80 transition-all duration-300 focus:outline-none"
-              whileFocus={{scale: 1.02}}
-            />
-            
-            <motion.input 
-              name="phone" 
-              placeholder="Phone" 
-              className="w-full p-4 rounded-2xl bg-[#0b0b0b]/80 backdrop-blur-sm border border-[#333]/50 focus:border-blue-500/70 focus:bg-[#111]/80 transition-all duration-300 focus:outline-none"
-              whileFocus={{scale: 1.02}}
-            />
-            
-            <motion.textarea 
-              name="message" 
-              required 
-              placeholder="Message" 
-              className="w-full p-4 rounded-2xl bg-[#0b0b0b]/80 backdrop-blur-sm border border-[#333]/50 focus:border-blue-500/70 focus:bg-[#111]/80 transition-all duration-300 focus:outline-none h-32 resize-none"
-              whileFocus={{scale: 1.02}}
-            ></motion.textarea>
-          </div>
-          
-          <motion.button 
-            type="submit" 
-            className="btn-accent w-full relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-2xl py-2"
-            disabled={loading}
-            whileHover={!loading ? {scale: 1.02, y: -2} : {}}
-            whileTap={!loading ? {scale: 0.98} : {}}
+            <div className="flex gap-4 mt-12">
+              {siteConfig.contact.social.map((s, i) => (
+                <a 
+                  key={i} 
+                  href={s.link} 
+                  className="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-accent transition-all duration-300"
+                >
+                  <span className="text-sm font-bold">{s.name.charAt(0)}</span>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3"
           >
-            <span className="relative z-10">
-              {loading ? 'Sending...' : 'Submit'}
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-          </motion.button>
-          
-          {status === 'SUCCESS' && (
-            <motion.p 
-              className="text-green-400 text-center p-4 bg-green-400/10 rounded-lg border border-green-400/30"
-              initial={{opacity: 0, y: 10}}
-              animate={{opacity: 1, y: 0}}
-            >
-              Thanks! Message sent successfully.
-            </motion.p>
-          )}
-          {status === 'ERROR' && (
-            <motion.p 
-              className="text-red-400 text-center p-4 bg-red-400/10 rounded-lg border border-red-400/30"
-              initial={{opacity: 0, y: 10}}
-              animate={{opacity: 1, y: 0}}
-            >
-              Oops! There was an error sending your message.
-            </motion.p>
-          )}
-        </motion.form>
+            <form onSubmit={handleSubmit} className="glass p-10 rounded-[32px] border border-white/5 space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
+                  <input 
+                    name="name" 
+                    required 
+                    placeholder="John Doe" 
+                    className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:bg-white/10 transition-all outline-none text-white"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
+                  <input 
+                    name="email" 
+                    type="email" 
+                    required 
+                    placeholder="john@example.com" 
+                    className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:bg-white/10 transition-all outline-none text-white"
+                  />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Project Message</label>
+                <textarea 
+                  name="message" 
+                  required 
+                  placeholder="Tell me about your project..." 
+                  className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:bg-white/10 transition-all outline-none h-40 resize-none text-white"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                disabled={loading}
+                className="btn-accent w-full flex items-center justify-center gap-3 py-4 disabled:opacity-50"
+              >
+                {loading ? 'Sending Message...' : 'Send Message'}
+                <FiSend />
+              </button>
+
+              {status === 'SUCCESS' && (
+                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-center font-medium">
+                  Message sent successfully! I&apos;ll get back to you soon.
+                </div>
+              )}
+              {status === 'ERROR' && (
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-center font-medium">
+                  Failed to send message. Please try again or email me directly.
+                </div>
+              )}
+            </form>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -16,56 +16,79 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-black/50 backdrop-blur-lg shadow-lg' : 'bg-black/30 backdrop-blur-md'
-    }`}>
-      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Link href="#" className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent hover:from-blue-400 hover:to-purple-500 transition-all duration-300 uppercase">
-            Rabeel.
-          </Link>
-        </div>
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#portfolio' },
+  ]
 
-        <div className="hidden md:flex items-center gap-6">
-          <div className="flex gap-4">
-            <a href="#contact" className="btn-accent relative overflow-hidden group">
-              <span className="relative z-10 px-2 py-4">Get In Touch</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-            </a>
+  return (
+    <header className={`sticky top-0 z-50 transition-all duration-500 ${
+      scrolled ? 'glass py-3 shadow-glass' : 'bg-transparent py-5'
+    }`}>
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <Link href="/" className="text-2xl font-black tracking-tighter hover:opacity-80 transition-opacity">
+          <span className="text-white">RABEEL</span>
+          <span className="text-accent">.</span>
+        </Link>
+
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex gap-8">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300 relative group"
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            ))}
           </div>
+          <a href="#contact" className="btn-accent text-sm py-2 px-6">
+            Get In Touch
+          </a>
         </div>
 
         {/* Mobile menu button */}
         <button 
-          className="md:hidden p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300" 
+          className="md:hidden p-2 rounded-xl glass-light hover:bg-white/10 transition-all duration-300" 
           onClick={() => setOpen(!open)}
+          aria-label="Toggle Menu"
         >
-          <div className="relative w-6 h-6">
-            <FiMenu className={`absolute inset-0 transition-all duration-300 ${open ? 'opacity-0 rotate-180' : 'opacity-100 rotate-0'}`} size={22}/>
-            <FiX className={`absolute inset-0 transition-all duration-300 ${open ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'}`} size={22}/>
+          <div className="relative w-6 h-6 flex items-center justify-center">
+            {open ? <FiX size={24} /> : <FiMenu size={24} />}
           </div>
         </button>
       </nav>
 
       {/* Mobile menu */}
-      <div className={`md:hidden bg-[#0b0b0b]/95 backdrop-blur-lg transition-all duration-300 ${
-        open ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
-      } overflow-hidden`}>
-        <div className="px-6 py-4 space-y-2">
-          {['Home', 'About', 'Portfolio', 'Contact'].map((item, index) => (
-            <Link 
-              key={item}
-              href={item === 'Home' ? '#' : `#${item.toLowerCase()}`} 
-              className="block py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:translate-x-2"
-              style={{ animationDelay: `${index * 100}ms` }}
+      <div className={`md:hidden absolute top-full left-0 w-full glass transition-all duration-500 ease-in-out ${
+        open ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible'
+      } border-t border-white/5`}>
+        <div className="px-6 py-8 space-y-4">
+          {navLinks.map((link) => (
+            <a 
+              key={link.name}
+              href={link.href} 
+              className="block text-lg font-medium py-2 text-gray-300 hover:text-white transition-colors"
               onClick={() => setOpen(false)}
             >
-              {item}
-            </Link>
+              {link.name}
+            </a>
           ))}
+          <a 
+            href="#contact" 
+            className="btn-accent block text-center"
+            onClick={() => setOpen(false)}
+          >
+            Get In Touch
+          </a>
         </div>
       </div>
     </header>
   )
 }
+
