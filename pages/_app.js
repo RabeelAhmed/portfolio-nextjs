@@ -10,10 +10,13 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <title>Rabeel Ahmed | Web Developer Portfolio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Personal portfolio — Jack." />
-        <meta property="og:title" content="Jack. — Designer & Developer" />
-        <meta property="og:description" content="We Design & Build Creative Products" />
+        <meta name="description" content="Portfolio of Rabeel Ahmed, a full-stack developer specialized in MERN stack, Next.js, and building impactful web applications." />
+        <meta property="og:title" content="Rabeel Ahmed | Web Developer Portfolio" />
+        <meta property="og:description" content="Crafting digital experiences with MERN stack and Next.js. View projects and experience of Rabeel Ahmed." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/profile.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />

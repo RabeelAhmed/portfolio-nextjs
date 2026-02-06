@@ -31,18 +31,18 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <span className="text-white">Crafting</span> <br />
-            <span className="text-gradient">Digital</span> Experiences
+            <span className="text-white">Rabeel Ahmed</span> <br />
+            <span className="text-gradient">Full-Stack</span> Developer
           </motion.h1>
 
-          <motion.p 
-            className="text-lg md:text-xl text-gray-400 max-w-lg mb-10 leading-relaxed"
+          <motion.h2 
+            className="text-lg md:text-xl text-gray-400 max-w-lg mb-10 leading-relaxed font-normal"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            I&apos;m a full-stack developer dedicated to building impactful, user-centric web applications that blend logic with beautiful design.
-          </motion.p>
+            I&apos;m a dedicated web developer focused on building impactful, user-centric web applications that blend logic with beautiful design.
+          </motion.h2>
 
           <motion.div 
             className="flex flex-wrap gap-4"
