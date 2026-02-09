@@ -2,6 +2,7 @@ import { useState } from 'react'
 import siteConfig from '../data/siteConfig'
 import { motion } from 'framer-motion'
 import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi'
+import { fadeIn, staggerContainer } from '../utils/animations'
 
 export default function Contact() {
   const [status, setStatus] = useState(null)
@@ -52,13 +53,16 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <motion.div 
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.25 }}
+        className="max-w-7xl mx-auto px-6 relative z-10"
+      >
         <div className="grid lg:grid-cols-5 gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={fadeIn('right', 'tween', 0.2, 1)}
             className="lg:col-span-2"
           >
             <span className="text-accent font-bold tracking-widest text-sm uppercase mb-4 block">Contact</span>
@@ -83,29 +87,29 @@ export default function Contact() {
 
             <div className="flex gap-4 mt-12">
               {siteConfig.contact.social.map((s, i) => (
-                <a 
+                <motion.a 
                   key={i} 
                   href={s.link} 
                   className="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-accent transition-all duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   <span className="text-sm font-bold">{s.name.charAt(0)}</span>
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={fadeIn('left', 'tween', 0.2, 1)}
             className="lg:col-span-3"
           >
             <form onSubmit={handleSubmit} className="glass p-10 rounded-[32px] border border-white/5 space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
-                  <input 
+                  <motion.input 
+                    whileFocus={{ scale: 1.01 }}
                     name="name" 
                     required 
                     placeholder="John Doe" 
@@ -114,7 +118,8 @@ export default function Contact() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
-                  <input 
+                  <motion.input 
+                    whileFocus={{ scale: 1.01 }}
                     name="email" 
                     type="email" 
                     required 
@@ -126,22 +131,25 @@ export default function Contact() {
               
               <div className="space-y-2">
                 <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Project Message</label>
-                <textarea 
+                <motion.textarea 
+                  whileFocus={{ scale: 1.01 }}
                   name="message" 
                   required 
                   placeholder="Tell me about your project..." 
                   className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:bg-white/10 transition-all outline-none h-40 resize-none text-white"
-                ></textarea>
+                ></motion.textarea>
               </div>
 
-              <button 
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit" 
                 disabled={loading}
                 className="btn-accent w-full flex items-center justify-center gap-3 py-4 disabled:opacity-50"
               >
                 {loading ? 'Sending Message...' : 'Send Message'}
                 <FiSend />
-              </button>
+              </motion.button>
 
               {status === 'SUCCESS' && (
                 <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-center font-medium">
@@ -156,7 +164,7 @@ export default function Contact() {
             </form>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
