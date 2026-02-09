@@ -13,7 +13,7 @@ const siteConfig = {
   ],
   about: {
     heading: 'Need a Modern Web App?',
-    paragraph: 'I am a passionate web developer with over two years of experience in building full-stack applications using the MERN stack, and SQL/NoSQL databases. My work ranges from travel platforms with AI recommendations to secure role-based login systems and real-time features. I focus on creating applications that are not only visually appealing but also secure, scalable, and optimized for performance.'
+    paragraph: 'I am Rabeel Ahmed Sulehria, a passionate web developer with over two years of experience in building full-stack applications using the MERN stack, and SQL/NoSQL databases. My work ranges from travel platforms with AI recommendations to secure role-based login systems and real-time features. I focus on creating applications that are not only visually appealing but also secure, scalable, and optimized for performance.'
   },
   skills: {
     list: [
