@@ -1,6 +1,9 @@
 import '../styles/globals.css'
 import Head from 'next/head'
 import { useEffect } from 'react'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -21,7 +24,9 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="google-site-verification" content="D7esaZKJ1Ul04XFd-cmBp0v9GZZtKtLBXLWiCH2Tlog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <main className={inter.className}>
+        <Component {...pageProps} />
+      </main>
     </>
   )
 }
