@@ -1,39 +1,40 @@
-import { FaClock, FaTasks, FaSmile } from 'react-icons/fa'
-import siteConfig from '../data/siteConfig'
-import { motion } from 'framer-motion'
+"use client"
 
-import { 
-  FaCode, 
-  FaLaptopCode, 
-  FaTools, 
-  FaProjectDiagram 
+import { m } from 'framer-motion'
+import siteConfig from '../data/siteConfig'
+import {
+  FaCode,
+  FaLaptopCode,
+  FaTools,
+  FaProjectDiagram,
 } from 'react-icons/fa'
 
-const icons = { 
-  FaCode, 
-  FaLaptopCode, 
-  FaTools, 
-  FaProjectDiagram 
+// Map icon names from siteConfig to their components
+const icons = {
+  FaCode,
+  FaLaptopCode,
+  FaTools,
+  FaProjectDiagram,
 }
 
-export default function Stats(){
+export default function Stats() {
   return (
-    <section className="py-12 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden" aria-label="Statistics">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
         {siteConfig.stats.map((s, index) => {
-          const Icon = icons[s.icon] || FaClock
+          const Icon = icons[s.icon] || FaCode
           return (
-            <motion.div 
-              key={s.id} 
+            <m.div
+              key={s.id}
               className="glass p-8 rounded-3xl border border-white/5 hover:border-accent/30 transition-all duration-500 group"
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
               <div className="flex flex-col items-center text-center gap-4">
                 <div className="p-4 rounded-2xl bg-accent/5 text-accent group-hover:bg-accent/10 transition-colors">
-                  <Icon size={24} />
+                  <Icon size={24} aria-hidden="true" />
                 </div>
                 <div>
                   <h3 className="text-sm font-medium text-gray-400 mb-1">{s.title.split(' ').slice(1).join(' ')}</h3>
@@ -42,7 +43,7 @@ export default function Stats(){
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           )
         })}
       </div>

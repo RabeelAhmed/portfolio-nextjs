@@ -1,5 +1,7 @@
 "use client"
 
+// Note: No "use client" needed — this is Pages Router, not App Router.
+// The component uses ssr:false in index.js to handle window.scrollY safely.
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { FiMenu, FiX } from 'react-icons/fi'
@@ -27,7 +29,7 @@ export default function Navbar() {
     <header className={`sticky top-0 z-50 transition-all duration-500 ${
       scrolled ? 'glass py-3 shadow-glass' : 'bg-transparent py-5'
     }`}>
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between" aria-label="Main navigation">
         <Link href="/" className="text-2xl font-black tracking-tighter hover:opacity-80 transition-opacity">
           <span className="text-white">RABEEL</span>
           <span className="text-accent">.</span>

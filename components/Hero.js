@@ -1,6 +1,8 @@
+"use client"
+
 import Image from 'next/image'
 import siteConfig from '../data/siteConfig'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { FiArrowRight, FiDownload } from 'react-icons/fi'
 import { fadeIn, staggerContainer, textVariant, zoomIn } from '../utils/animations'
 
@@ -11,63 +13,63 @@ export default function Hero() {
       <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[60px] md:blur-[120px] animate-pulse"></div>
       <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[60px] md:blur-[120px] animate-pulse delay-700"></div>
 
-      <motion.div 
+      <m.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
         className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10"
       >
-        <motion.div
+        <m.div
           variants={fadeIn('right', 'tween', 0.2, 1)}
         >
-          <motion.span 
+          <m.span
             variants={textVariant(0.3)}
             className="inline-block px-4 py-1.5 rounded-full glass-light text-accent text-sm font-semibold tracking-wide mb-6"
           >
             Available for new opportunities
-          </motion.span>
-          
-          <motion.h1 
+          </m.span>
+
+          <m.h1
             variants={textVariant(0.4)}
             className="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6"
           >
             <span className="text-white">Rabeel Ahmed</span> <br />
             <span className="text-gradient">Full-Stack</span> Developer
-          </motion.h1>
+          </m.h1>
 
-          <motion.h2 
+          <m.p
             variants={textVariant(0.5)}
             className="text-lg md:text-xl text-gray-400 max-w-lg mb-10 leading-relaxed font-normal"
           >
             I&apos;m a dedicated web developer focused on building impactful, user-centric web applications that blend logic with beautiful design.
-          </motion.h2>
+          </m.p>
 
-          <motion.div 
+          <m.div
             variants={textVariant(0.6)}
             className="flex flex-wrap gap-4"
           >
-            <motion.a 
-              href="#portfolio" 
+            <m.a
+              href="#portfolio"
               className="btn-accent flex items-center gap-2 group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               View My Work
               <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-            <motion.a 
-              href="#contact" 
+            </m.a>
+            <m.a
+              href="#contact"
               className="px-8 py-3 glass hover:bg-white/5 transition-all duration-300 font-semibold rounded-full flex items-center gap-2 border-white/10"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Let&apos;s Talk
-            </motion.a>
-          </motion.div>
-        </motion.div>
+            </m.a>
+          </m.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           variants={zoomIn(0.4, 1)}
           className="relative flex justify-center lg:justify-end"
         >
@@ -75,12 +77,12 @@ export default function Hero() {
             {/* Animated Glow Rings */}
             <div className="absolute inset-x-0 inset-y-0 rounded-full border border-accent/20 animate-slow-spin"></div>
             <div className="absolute inset-x-8 inset-y-8 rounded-full border border-secondary/20 animate-slow-spin [animation-direction:reverse]"></div>
-            
+
             <div className="relative w-full h-full rounded-2xl overflow-hidden glass shadow-2xl border border-white/10 p-4">
               <div className="relative w-full h-full rounded-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                 <Image
                   src="/profile.png"
-                  alt="Rabeel Ahmed"
+                  alt="Rabeel Ahmed — Full Stack Web Developer"
                   fill
                   sizes="(max-width: 768px) 300px, 450px"
                   className="object-cover object-top"
@@ -90,7 +92,7 @@ export default function Hero() {
             </div>
 
             {/* Floating Badges */}
-            <motion.div 
+            <m.div
               className="absolute -top-4 -right-4 bg-primary/80 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-2xl hidden md:block z-20"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
@@ -102,9 +104,9 @@ export default function Hero() {
                   <p className="text-gray-400">Completed</p>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
-            <motion.div 
+            <m.div
               className="absolute -bottom-4 -left-4 bg-primary/80 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-2xl hidden md:block z-20"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
@@ -116,11 +118,10 @@ export default function Hero() {
                   <p className="text-gray-400">Experience</p>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   )
 }
-

@@ -1,8 +1,17 @@
+"use client"
+
 import { useState } from 'react'
 import siteConfig from '../data/siteConfig'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi'
+import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import { fadeIn, staggerContainer } from '../utils/animations'
+
+// Map social name → icon component (tree-shakeable named imports)
+const socialIconMap = {
+  LinkedIn: FaLinkedin,
+  GitHub:   FaGithub,
+}
 
 export default function Contact() {
   const [status, setStatus] = useState(null)
@@ -46,14 +55,14 @@ export default function Contact() {
   }
 
   const contactInfo = [
-    { icon: <FiMapPin />, label: 'Location', value: siteConfig.contact.address },
-    { icon: <FiPhone />, label: 'Phone', value: siteConfig.contact.phone },
-    { icon: <FiMail />, label: 'Email', value: siteConfig.contact.email },
+    { icon: <FiMapPin aria-hidden="true" />, label: 'Location', value: siteConfig.contact.address },
+    { icon: <FiPhone aria-hidden="true" />, label: 'Phone', value: siteConfig.contact.phone },
+    { icon: <FiMail aria-hidden="true" />, label: 'Email', value: siteConfig.contact.email },
   ]
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
-      <motion.div 
+      <m.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
@@ -61,7 +70,7 @@ export default function Contact() {
         className="max-w-7xl mx-auto px-6 relative z-10"
       >
         <div className="grid lg:grid-cols-5 gap-16">
-          <motion.div
+          <m.div
             variants={fadeIn('right', 'tween', 0.2, 1)}
             className="lg:col-span-2"
           >
@@ -86,85 +95,97 @@ export default function Contact() {
             </div>
 
             <div className="flex gap-4 mt-12">
-              {siteConfig.contact.social.map((s, i) => (
-                <motion.a 
-                  key={i} 
-                  href={s.link} 
-                  className="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-accent transition-all duration-300"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <span className="text-sm font-bold">{s.name.charAt(0)}</span>
-                </motion.a>
-              ))}
+              {siteConfig.contact.social.map((s, i) => {
+                const Icon = socialIconMap[s.name]
+                return (
+                  <m.a
+                    key={i}
+                    href={s.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Rabeel Ahmed on ${s.name}`}
+                    className="w-12 h-12 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-accent transition-all duration-300"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    {Icon
+                      ? <Icon size={20} aria-hidden="true" />
+                      : <span className="text-sm font-bold">{s.name.charAt(0)}</span>
+                    }
+                  </m.a>
+                )
+              })}
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             variants={fadeIn('left', 'tween', 0.2, 1)}
             className="lg:col-span-3"
           >
             <form onSubmit={handleSubmit} className="glass p-10 rounded-[32px] border border-white/5 space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
-                  <motion.input 
+                  <label htmlFor="contact-name" className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
+                  <m.input
+                    id="contact-name"
                     whileFocus={{ scale: 1.01 }}
-                    name="name" 
-                    required 
-                    placeholder="John Doe" 
+                    name="name"
+                    required
+                    placeholder="John Doe"
                     className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:bg-white/10 transition-all outline-none text-white"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
-                  <motion.input 
+                  <label htmlFor="contact-email" className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
+                  <m.input
+                    id="contact-email"
                     whileFocus={{ scale: 1.01 }}
-                    name="email" 
-                    type="email" 
-                    required 
-                    placeholder="john@example.com" 
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="john@example.com"
                     className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:bg-white/10 transition-all outline-none text-white"
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Project Message</label>
-                <motion.textarea 
+                <label htmlFor="contact-message" className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Project Message</label>
+                <m.textarea
+                  id="contact-message"
                   whileFocus={{ scale: 1.01 }}
-                  name="message" 
-                  required 
-                  placeholder="Tell me about your project..." 
+                  name="message"
+                  required
+                  placeholder="Tell me about your project..."
                   className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-accent/50 focus:bg-white/10 transition-all outline-none h-40 resize-none text-white"
-                ></motion.textarea>
+                ></m.textarea>
               </div>
 
-              <motion.button 
+              <m.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                type="submit" 
+                type="submit"
                 disabled={loading}
                 className="btn-accent w-full flex items-center justify-center gap-3 py-4 disabled:opacity-50"
               >
                 {loading ? 'Sending Message...' : 'Send Message'}
-                <FiSend />
-              </motion.button>
+                <FiSend aria-hidden="true" />
+              </m.button>
 
               {status === 'SUCCESS' && (
-                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-center font-medium">
+                <div role="alert" className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-center font-medium">
                   Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
               {status === 'ERROR' && (
-                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-center font-medium">
+                <div role="alert" className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-center font-medium">
                   Failed to send message. Please try again or email me directly.
                 </div>
               )}
             </form>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   )
 }

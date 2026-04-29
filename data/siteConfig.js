@@ -54,7 +54,7 @@ const siteConfig = {
     email: 'rabeelsulehria3@gmail.com',
     social: [
       { name: 'LinkedIn', link: 'https://www.linkedin.com/in/rabeel-ahmed-b1823b2b2/' },
-      { name: 'GitHub', link: 'https://github.com/RabeelAhmed/RabeelAhmed/tree/main' }
+      { name: 'GitHub', link: 'https://github.com/RabeelAhmed' }
     ]
   }
 }
