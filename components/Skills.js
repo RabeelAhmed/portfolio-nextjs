@@ -18,7 +18,8 @@ import { SiExpress }     from 'react-icons/si'
 import { SiNodedotjs }   from 'react-icons/si'
 import { SiMongodb }     from 'react-icons/si'
 import { SiBootstrap }   from 'react-icons/si'
-import { SiGit }         from 'react-icons/si'
+import { SiGit }    from 'react-icons/si'
+import { SiDocker } from 'react-icons/si'
 import { SiPostman }     from 'react-icons/si'
 import { SiGithub }      from 'react-icons/si'
 import { SiNpm }         from 'react-icons/si'
@@ -39,6 +40,8 @@ const iconMap = {
   SiMongodb,
   SiBootstrap,
   SiGit,
+  SiGithubactions: SiGithub,
+  SiDocker,
   SiPostman,
   SiGithub,
   SiNpm,

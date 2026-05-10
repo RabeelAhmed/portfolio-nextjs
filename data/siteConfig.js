@@ -27,7 +27,9 @@ const siteConfig = {
       { name: 'Node.js', icon: 'SiNodedotjs' },
       { name: 'MongoDB', icon: 'SiMongodb' },
       { name: 'Bootstrap', icon: 'SiBootstrap' },
-      { name: 'Git', icon: 'SiGit' }
+      { name: 'Git', icon: 'SiGit' },
+      { name: 'GitHub Actions', icon: 'SiGithubactions' },
+      { name: 'Docker', icon: 'SiDocker' }
     ],
     tools: [
       { name: 'VS Code', icon: 'VscVscode' },
@@ -35,7 +37,8 @@ const siteConfig = {
       { name: 'GitHub', icon: 'SiGithub' },
       { name: 'Npm', icon: 'SiNpm' },
       { name: 'MongoDB Compass', icon: 'SiMongodb' },
-      { name: 'MySQL', icon: 'SiMysql' }
+      { name: 'MySQL', icon: 'SiMysql' },
+      { name: 'Docker Desktop', icon: 'SiDocker' }
     ]
   },
   portfolio: [
