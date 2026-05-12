@@ -14,43 +14,29 @@ const socialIconMap = {
 }
 
 export default function Contact() {
-  const [status, setStatus] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'success' | 'error'
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
-    setStatus(null);
+    setStatus('sending');
 
-    const form = new FormData(e.target);
-    const formData = {
-      name: form.get('name'),
-      email: form.get('email'),
-      phone: form.get('phone'),
-      message: form.get('message')
-    };
+    const formData = new FormData(e.target);
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
       });
 
-      const result = await res.json();
-
-      if (res.ok && result.status === 'success') {
-        setStatus('SUCCESS');
+      if (res.ok) {
+        setStatus('success');
         e.target.reset();
       } else {
-        setStatus('ERROR');
+        setStatus('error');
       }
     } catch (error) {
-      setStatus('ERROR');
-    } finally {
-      setLoading(false);
+      setStatus('error');
     }
   }
 
@@ -122,7 +108,16 @@ export default function Contact() {
             variants={fadeIn('left', 'tween', 0.2, 1)}
             className="lg:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="glass p-10 rounded-[32px] border border-white/5 space-y-6">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+              className="glass p-10 rounded-[32px] border border-white/5 space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="bot-field" />
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="contact-name" className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
@@ -165,19 +160,24 @@ export default function Contact() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                disabled={loading}
-                className="btn-accent w-full flex items-center justify-center gap-3 py-4 disabled:opacity-50"
+                disabled={status === 'sending' || status === 'success'}
+                className={`btn-accent w-full flex items-center justify-center gap-3 py-4 disabled:opacity-50 ${
+                  status === 'success' ? 'bg-emerald-500 hover:bg-emerald-500' :
+                  status === 'error'   ? 'bg-red-500 hover:bg-red-500' : ''
+                }`}
               >
-                {loading ? 'Sending Message...' : 'Send Message'}
-                <FiSend aria-hidden="true" />
+                {status === 'idle'    && <><span>Send Message</span><FiSend aria-hidden="true" /></>}
+                {status === 'sending' && <span>Sending...</span>}
+                {status === 'success' && <span>Message Sent ✓</span>}
+                {status === 'error'   && <span>Failed. Try Again</span>}
               </m.button>
 
-              {status === 'SUCCESS' && (
+              {status === 'success' && (
                 <div role="alert" className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-center font-medium">
                   Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
-              {status === 'ERROR' && (
+              {status === 'error' && (
                 <div role="alert" className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-center font-medium">
                   Failed to send message. Please try again or email me directly.
                 </div>

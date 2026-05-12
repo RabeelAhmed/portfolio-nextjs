@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <!-- 
+      This file exists solely so Netlify can detect the "contact" form at build time.
+      Next.js JSX is not parsed by Netlify's post-processing step, so a plain HTML
+      form with matching field names is required for Netlify Forms to work.
+    -->
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="bot-field" />
+      <input type="text"   name="name"    />
+      <input type="email"  name="email"   />
+      <input type="tel"    name="phone"   />
+      <textarea            name="message" ></textarea>
+    </form>
+  </body>
+</html>
