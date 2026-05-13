@@ -18,29 +18,36 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('sending');
+    setStatus("sending");
 
-    const formData = new FormData(e.target);
+    const form = e.target;
+    const data = new URLSearchParams();
+
+    for (const [key, value] of new FormData(form)) {
+      data.append(key, value);
+    }
 
     try {
-      const res = await fetch('/api/submit-form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
+      const response = await fetch("/?no-cache=" + Date.now(), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: data.toString(),
       });
 
-      const data = await res.json();
-
-      if (data.success) {
-        setStatus('success');
-        e.target.reset();
+      if (response.ok) {
+        setStatus("success");
+        form.reset();
       } else {
-        setStatus('error');
+        console.error("Form error status:", response.status);
+        setStatus("error");
       }
-    } catch {
-      setStatus('error');
+    } catch (err) {
+      console.error("Form error:", err);
+      setStatus("error");
     }
-  }
+  };
 
   const contactInfo = [
     { icon: <FiMapPin aria-hidden="true" />, label: 'Location', value: siteConfig.contact.address },
@@ -113,13 +120,14 @@ export default function Contact() {
             <form
               name="contact"
               method="POST"
+              action="/"
               data-netlify="true"
               netlify-honeypot="bot-field"
               onSubmit={handleSubmit}
               className="glass p-10 rounded-[32px] border border-white/5 space-y-6"
             >
               <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="bot-field" />
+              <input type="hidden" name="bot-field" className="hidden" />
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="contact-name" className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
