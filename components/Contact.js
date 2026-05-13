@@ -23,7 +23,7 @@ export default function Contact() {
     const formData = new FormData(e.target);
 
     try {
-      const res = await fetch('/.netlify/functions/submit-form', {
+      const res = await fetch('/api/submit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString(),
