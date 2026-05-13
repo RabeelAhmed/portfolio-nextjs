@@ -28,7 +28,7 @@ export default function Contact() {
     }
 
     try {
-      const response = await fetch("/?no-cache=" + Date.now(), {
+      const response = await fetch("/contact-form.html", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -120,7 +120,7 @@ export default function Contact() {
             <form
               name="contact"
               method="POST"
-              action="/"
+              action="/contact-form.html"
               data-netlify="true"
               netlify-honeypot="bot-field"
               onSubmit={handleSubmit}
