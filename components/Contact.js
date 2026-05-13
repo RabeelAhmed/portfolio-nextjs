@@ -16,26 +16,28 @@ const socialIconMap = {
 export default function Contact() {
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'success' | 'error'
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
 
     const formData = new FormData(e.target);
 
     try {
-      const res = await fetch('/', {
+      const res = await fetch('/.netlify/functions/submit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString(),
       });
 
-      if (res.ok) {
+      const data = await res.json();
+
+      if (data.success) {
         setStatus('success');
         e.target.reset();
       } else {
         setStatus('error');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
     }
   }
