@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^16.2.6",
     "@tailwindcss/postcss": "^4.1.11",
     "framer-motion": "^12.23.12",
     "next": "15.4.10",

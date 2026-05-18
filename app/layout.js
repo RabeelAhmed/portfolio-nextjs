@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import { Inter } from 'next/font/google'
 import MotionProvider from '../components/MotionProvider'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -113,6 +114,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       </body>
     </html>
   )
