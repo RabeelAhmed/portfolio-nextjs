@@ -11,6 +11,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_GTM_ID"
 
 # ── Netlify Next.js plugin (SSR + ISR on Netlify) ────────────
 [[plugins]]
