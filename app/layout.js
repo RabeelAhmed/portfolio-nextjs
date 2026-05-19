@@ -114,7 +114,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        <GoogleTagManager gtmId="GTM-WKLF69PM" />
       </body>
     </html>
   )
