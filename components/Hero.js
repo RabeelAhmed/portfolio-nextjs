@@ -32,11 +32,16 @@ export default function Hero() {
 
           <m.h1
             variants={textVariant(0.4)}
-            className="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6"
+            className="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-4 text-white"
           >
-            <span className="text-white">Rabeel Ahmed</span> <br />
-            <span className="text-gradient">Full-Stack</span> Developer
+            Rabeel Ahmed Sulehria
           </m.h1>
+          <m.h2
+            variants={textVariant(0.45)}
+            className="text-3xl md:text-5xl font-bold leading-tight mb-6 text-gradient"
+          >
+            Full-Stack Developer
+          </m.h2>
 
           <m.p
             variants={textVariant(0.5)}
@@ -81,8 +86,8 @@ export default function Hero() {
             <div className="relative w-full h-full rounded-2xl overflow-hidden glass shadow-2xl border border-white/10 p-4">
               <div className="relative w-full h-full rounded-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
                 <Image
-                  src="/profile.png"
-                  alt="Rabeel Ahmed — Full Stack Web Developer"
+                  src="/rabeel-ahmed-sulehria.webp"
+                  alt="Rabeel Ahmed Sulehria Full Stack Developer"
                   fill
                   sizes="(max-width: 768px) 300px, 450px"
                   className="object-cover object-top"

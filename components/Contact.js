@@ -69,8 +69,7 @@ export default function Contact() {
             variants={fadeIn('right', 'tween', 0.2, 1)}
             className="lg:col-span-2"
           >
-            <span className="text-accent font-bold tracking-widest text-sm uppercase mb-4 block">Contact</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Let&apos;s Create <br /> <span className="text-gradient">Something Great</span></h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Contact</h2>
             <p className="text-gray-400 text-lg mb-12">
               Have a project in mind or just want to say hi? Feel free to reach out. I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.
             </p>

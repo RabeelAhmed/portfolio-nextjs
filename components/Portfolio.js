@@ -17,8 +17,7 @@ export default function Portfolio() {
         className="max-w-7xl mx-auto px-6 relative z-10"
       >
         <div className="text-center mb-16">
-          <m.span variants={textVariant(0.2)} className="text-accent font-bold tracking-widest text-sm uppercase mb-4 block">Selected Works</m.span>
-          <m.h2 variants={textVariant(0.3)} className="text-4xl md:text-5xl font-bold text-white mb-6">Recent Projects</m.h2>
+          <m.h2 variants={textVariant(0.3)} className="text-4xl md:text-5xl font-bold text-white mb-6">Projects</m.h2>
           <m.p variants={textVariant(0.4)} className="text-gray-400 text-lg max-w-2xl mx-auto">
             A collection of digital solutions I&apos;ve built, ranging from complex full-stack applications to interactive front-end experiences.
           </m.p>
@@ -64,6 +63,15 @@ export default function Portfolio() {
                 {item.description && (
                   <p className="text-gray-400 text-sm mb-4 leading-relaxed">{item.description}</p>
                 )}
+                
+                {item.keyFeatures && (
+                  <ul className="text-xs text-gray-500 mb-4 list-disc pl-4 space-y-1">
+                    {item.keyFeatures.map((feat, idx) => (
+                      <li key={idx}>{feat}</li>
+                    ))}
+                  </ul>
+                )}
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {(item.tags || ['React', 'Next.js', 'Tailwind']).map(tag => (
                     <span key={tag} className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-white/5 text-gray-400">

@@ -10,50 +10,51 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'Rabeel Ahmed | Full Stack Web Developer',
-  description: 'Rabeel Ahmed is a full-stack web developer from Pakistan specializing in MERN stack, Next.js, Supabase, and React. Explore his portfolio, projects, and skills.',
+  title: 'Rabeel Ahmed Sulehria | Full Stack Developer | MERN Stack Developer',
+  description: 'Rabeel Ahmed Sulehria is a Full Stack Developer and MERN Stack Developer specializing in React, Next.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications.',
   keywords: [
     'Rabeel Ahmed',
-    'Rabeel Ahmed developer',
-    'Rabeel Ahmed portfolio',
-    'Rabeel Ahmed Pakistan',
-    'Rabeel Ahmed web developer',
-    'Rabeel Ahmed full stack developer',
-    'Rabeel Ahmed MERN stack',
-    'Rabeel Ahmed Next.js',
-    'Rabeel Ahmed React developer',
-    'Rabeel Ahmed Lahore',
-    'Full stack developer Pakistan',
-    'MERN stack developer Pakistan',
-    'Next.js developer Pakistan',
-    'React developer Lahore',
-    'Supabase developer Pakistan',
-    'Web developer Lahore Pakistan',
+    'Rabeel Ahmed Sulehria',
+    'Rabeel Sulehria',
+    'Rabeel Portfolio',
+    'Full Stack Developer',
+    'MERN Stack Developer',
+    'Web Developer',
+    'React Developer',
+    'Next.js Developer',
+    'Node.js Developer',
+    'MongoDB Developer',
+    'JavaScript Developer',
+    'Frontend Developer',
+    'Backend Developer',
+    'Software Engineer',
+    'Full Stack Developer Pakistan',
+    'MERN Stack Developer Pakistan'
   ],
-  authors: [{ name: 'Rabeel Ahmed' }],
-  creator: 'Rabeel Ahmed',
-  metadataBase: new URL('https://rabeelportfolio.netlify.app'),
+  authors: [{ name: 'Rabeel Ahmed Sulehria' }],
+  creator: 'Rabeel Ahmed Sulehria',
+  metadataBase: new URL('https://rabeelsportfolio.netlify.app'),
   openGraph: {
-    title: 'Rabeel Ahmed | Full Stack Web Developer',
-    description: 'Portfolio of Rabeel Ahmed — MERN stack, Next.js, Supabase, and React developer from Pakistan.',
-    url: 'https://rabeelportfolio.netlify.app',
-    siteName: 'Rabeel Ahmed Portfolio',
+    title: 'Rabeel Ahmed Sulehria | Full Stack Developer | MERN Stack Developer',
+    description: 'Rabeel Ahmed Sulehria is a Full Stack Developer and MERN Stack Developer specializing in React, Next.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications.',
+    url: 'https://rabeelsportfolio.netlify.app',
+    siteName: 'Rabeel Ahmed Sulehria Portfolio',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
+        url: '/rabeel-ahmed-sulehria.webp',
         width: 1200,
         height: 630,
-        alt: 'Rabeel Ahmed - Full Stack Developer',
+        alt: 'Rabeel Ahmed Sulehria Full Stack Developer',
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rabeel Ahmed | Full Stack Web Developer',
-    description: 'Portfolio of Rabeel Ahmed — MERN stack developer from Pakistan.',
-    images: ['/og-image.png'],
+    title: 'Rabeel Ahmed Sulehria | Full Stack Developer | MERN Stack Developer',
+    description: 'Rabeel Ahmed Sulehria is a Full Stack Developer and MERN Stack Developer specializing in React, Next.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications.',
+    images: ['/rabeel-ahmed-sulehria.webp'],
   },
   robots: {
     index: true,
@@ -64,37 +65,41 @@ export const metadata = {
     }
   },
   alternates: {
-    canonical: 'https://rabeelportfolio.netlify.app',
+    canonical: 'https://rabeelsportfolio.netlify.app',
   }
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Rabeel Ahmed',
-  url: 'https://rabeelportfolio.netlify.app',
-  jobTitle: 'Full Stack Web Developer',
-  description: 'Full-stack web developer from Pakistan specializing in MERN stack, Next.js, Supabase, and React.',
+  name: 'Rabeel Ahmed Sulehria',
+  url: 'https://rabeelsportfolio.netlify.app',
+  jobTitle: 'Full Stack Developer',
+  image: 'https://rabeelsportfolio.netlify.app/rabeel-ahmed-sulehria.webp',
+  description: 'Rabeel Ahmed Sulehria is a Full Stack Developer and MERN Stack Developer specializing in React, Next.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications.',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Lahore',
+    addressLocality: 'Sialkot',
+    addressRegion: 'Punjab',
     addressCountry: 'PK',
   },
   knowsAbout: [
     'React',
     'Next.js',
     'Node.js',
-    'MongoDB',
-    'Supabase',
-    'Tailwind CSS',
-    'MERN Stack',
     'Express.js',
+    'MongoDB',
     'JavaScript',
-    'TypeScript',
+    'Tailwind CSS',
+    'Docker',
+    'REST APIs',
+    'Full Stack Development'
   ],
   sameAs: [
     'https://github.com/RabeelAhmed',
     'https://www.linkedin.com/in/rabeel-ahmed-b1823b2b2/',
+    'https://www.facebook.com/rabeel.ahmed.sulehria',
+    'https://www.instagram.com/rabeel.ahmed.sulehria'
   ]
 }
 

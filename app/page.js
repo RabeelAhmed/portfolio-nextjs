@@ -4,6 +4,8 @@ import Stats from '../components/Stats'
 import About from '../components/About'
 import Skills from '../components/Skills'
 import Portfolio from '../components/Portfolio'
+import Experience from '../components/Experience'
+import SEOSection from '../components/SEOSection'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 
@@ -17,6 +19,8 @@ export default function Home() {
         <About />
         <Skills />
         <Portfolio />
+        <Experience />
+        <SEOSection />
         <Contact />
       </main>
       <Footer />

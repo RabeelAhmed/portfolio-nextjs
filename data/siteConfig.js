@@ -42,14 +42,78 @@ const siteConfig = {
     ]
   },
   portfolio: [
-    { id: 1, title: 'Asteroid Explorer', image: '/portfolio1.png', link: 'https://github.com/RabeelAhmed/asteroid-explorer' },
-    { id: 2, title: 'Voting App', image: '/portfolio2.png', link: 'https://github.com/RabeelAhmed/Voting_app' },
-    { id: 3, title: 'Universal Video Downloader', image: '/portfolio3.png', link: 'https://github.com/RabeelAhmed/universal-video-downloader' },
-    { id: 4, title: 'Mood Changer', image: '/portfolio4.png', link: 'https://github.com/RabeelAhmed/QuranicMood' },
-    { id: 5, title: 'Animated Website', image: '/portfolio5.png', link: 'https://github.com/RabeelAhmed/ochi-clone' },
-    { id: 6, title: 'Pinterest Clone ', image: '/portfolio6.png', link: 'https://github.com/RabeelAhmed/pinterest-clone' },
-    { id: 7, title: 'Doctor Appointment App', image: '/doctor-appointment.png', link: 'https://github.com/RabeelAhmed/doctor-appointment' },
-    { id: 8, title: 'Blood Donation Finder', image: '/donor-finder.png', link: 'https://github.com/RabeelAhmed/blood-donation-finder' }
+    {
+      id: 1,
+      title: 'Asteroid Explorer',
+      image: '/portfolio1.png',
+      link: 'https://github.com/RabeelAhmed/asteroid-explorer',
+      description: 'An interactive web application that retrieves and visualizes real-time asteroid data using NASA\'s NeoWS API.',
+      tags: ['React', 'Next.js', 'Tailwind CSS', 'NASA API', 'Framer Motion'],
+      keyFeatures: ['NASA API Integration', 'Asteroid Size charts', 'Distance visualizer']
+    },
+    {
+      id: 2,
+      title: 'Voting App',
+      image: '/portfolio2.png',
+      link: 'https://github.com/RabeelAhmed/Voting_app',
+      description: 'A secure, real-time online voting system with role-based dashboard controls for administrators and voters.',
+      tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+      keyFeatures: ['JWT Authentication', 'Real-time voting tallies', 'Admin candidate controls']
+    },
+    {
+      id: 3,
+      title: 'Universal Video Downloader',
+      image: '/portfolio3.png',
+      link: 'https://github.com/RabeelAhmed/universal-video-downloader',
+      description: 'A lightweight web utility that allows users to download videos from multiple online video platforms.',
+      tags: ['React', 'Express', 'Node.js', 'Tailwind CSS', 'API Integration'],
+      keyFeatures: ['Fast video format extraction', 'Multi-source downloads', 'Sleek progress bar']
+    },
+    {
+      id: 4,
+      title: 'Mood Changer',
+      image: '/portfolio4.png',
+      link: 'https://github.com/RabeelAhmed/QuranicMood',
+      description: 'A reflective web app offering Quranic verses and positive affirmations selected according to the user\'s emotional state.',
+      tags: ['React', 'Framer Motion', 'Tailwind CSS', 'Next.js'],
+      keyFeatures: ['Interactive mood selector', 'Curated translations', 'Dark-themed responsive UI']
+    },
+    {
+      id: 5,
+      title: 'Animated Website',
+      image: '/portfolio5.png',
+      link: 'https://github.com/RabeelAhmed/ochi-clone',
+      description: 'A high-fidelity frontend clone of the award-winning Ochi design website, loaded with premium animations.',
+      tags: ['React', 'Framer Motion', 'GSAP', 'Tailwind CSS', 'Locomotive Scroll'],
+      keyFeatures: ['Inertial smooth scrolling', 'Interactive parallax panels', 'Custom mouse follower']
+    },
+    {
+      id: 6,
+      title: 'Pinterest Clone',
+      image: '/portfolio6.png',
+      link: 'https://github.com/RabeelAhmed/pinterest-clone',
+      description: 'A full-stack photo sharing platform featuring masonry layout grids, user uploads, and customizable boards.',
+      tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+      keyFeatures: ['Masonry grid layout', 'User uploads & dashboard', 'Save to boards feature']
+    },
+    {
+      id: 7,
+      title: 'Doctor Appointment App',
+      image: '/doctor-appointment.png',
+      link: 'https://github.com/RabeelAhmed/doctor-appointment',
+      description: 'A medical scheduling platform that allows patients to search for healthcare providers and book consults.',
+      tags: ['React', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+      keyFeatures: ['Appointment scheduler', 'Doctor & patient portal', 'Secure medical reports']
+    },
+    {
+      id: 8,
+      title: 'Blood Donation Finder',
+      image: '/donor-finder.png',
+      link: 'https://github.com/RabeelAhmed/blood-donation-finder',
+      description: 'A community-driven web application to connect local blood donors with patients in urgent need.',
+      tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Google Maps API'],
+      keyFeatures: ['Geographic donor lookup', 'Real-time blood requests', 'SMS notifications']
+    }
   ],
   contact: {
     address: 'Sialkot Punjab, Pakistan',

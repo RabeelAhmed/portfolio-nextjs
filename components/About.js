@@ -27,11 +27,11 @@ export default function About() {
           >
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/profile.png"
+                src="/rabeel-ahmed-sulehria.webp"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
-                alt="Rabeel Ahmed — Full Stack Web Developer from Pakistan"
+                alt="Rabeel Ahmed Sulehria Full Stack Developer"
                 loading="lazy"
               />
             </div>
@@ -41,11 +41,7 @@ export default function About() {
         <m.div
           variants={fadeIn('left', 'tween', 0.2, 1)}
         >
-          <span className="text-accent font-bold tracking-widest text-sm uppercase mb-4 block">About Me</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-            Driven by Passion, <br />
-            <span className="text-gradient">Defined by Code.</span>
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">About</h2>
           <p className="text-lg text-gray-400 leading-relaxed mb-10">
             {siteConfig.about.paragraph}
           </p>

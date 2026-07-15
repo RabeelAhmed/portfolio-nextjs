@@ -66,8 +66,7 @@ export default function Skills() {
           viewport={{ once: true, amount: 0.25 }}
           className="text-center mb-16"
         >
-          <m.span variants={textVariant(0.2)} className="text-accent font-bold tracking-widest text-sm uppercase mb-4 block">My Expertise</m.span>
-          <m.h2 variants={textVariant(0.3)} className="text-4xl md:text-5xl font-bold text-white mb-6">Tools &amp; Technologies</m.h2>
+          <m.h2 variants={textVariant(0.3)} className="text-4xl md:text-5xl font-bold text-white mb-6">Skills</m.h2>
           <m.p variants={textVariant(0.4)} className="text-gray-400 text-lg max-w-2xl mx-auto">
             I leverage a modern tech stack to build high-performance, scalable applications that deliver exceptional user experiences.
           </m.p>
