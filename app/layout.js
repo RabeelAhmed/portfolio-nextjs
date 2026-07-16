@@ -33,11 +33,11 @@ export const metadata = {
   ],
   authors: [{ name: 'Rabeel Ahmed Sulehria' }],
   creator: 'Rabeel Ahmed Sulehria',
-  metadataBase: new URL('https://rabeelsportfolio.netlify.app'),
+  metadataBase: new URL('https://rabeelportfolio.netlify.app'),
   openGraph: {
     title: 'Rabeel Ahmed Sulehria | Full Stack Developer | MERN Stack Developer',
     description: 'Rabeel Ahmed Sulehria is a Full Stack Developer and MERN Stack Developer specializing in React, Next.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications.',
-    url: 'https://rabeelsportfolio.netlify.app',
+    url: 'https://rabeelportfolio.netlify.app',
     siteName: 'Rabeel Ahmed Sulehria Portfolio',
     locale: 'en_US',
     type: 'website',
@@ -65,7 +65,7 @@ export const metadata = {
     }
   },
   alternates: {
-    canonical: 'https://rabeelsportfolio.netlify.app',
+    canonical: 'https://rabeelportfolio.netlify.app',
   }
 }
 
@@ -73,9 +73,9 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Rabeel Ahmed Sulehria',
-  url: 'https://rabeelsportfolio.netlify.app',
+  url: 'https://rabeelportfolio.netlify.app',
   jobTitle: 'Full Stack Developer',
-  image: 'https://rabeelsportfolio.netlify.app/rabeel-ahmed-sulehria.webp',
+  image: 'https://rabeelportfolio.netlify.app/rabeel-ahmed-sulehria.webp',
   description: 'Rabeel Ahmed Sulehria is a Full Stack Developer and MERN Stack Developer specializing in React, Next.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications.',
   address: {
     '@type': 'PostalAddress',
