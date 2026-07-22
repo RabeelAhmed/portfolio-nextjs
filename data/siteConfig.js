@@ -43,6 +43,26 @@ const siteConfig = {
   },
   portfolio: [
     {
+      id: 'traveler',
+      featured: true,
+      badge: 'FLAGSHIP PROJECT • AI INTEGRATED',
+      title: 'Traveler — Social Travel Platform',
+      subtitle: 'AI-Powered · Real-Time · Cloud-Native',
+      image: '/traveler-social.png',
+      link: 'https://traveler-social.netlify.app/',
+      github: 'https://github.com/RabeelAhmed/Traveler',
+      description: 'A production-grade social travel platform with a custom KNN AI Travel Advisor, geo-tagged interactive map stories, real-time messaging, collaborative journey planning, and serverless Redis caching — deployed across Netlify & Vercel.',
+      tags: ['React 18', 'Node.js', 'Express', 'MongoDB', 'Leaflet Maps', 'Socket.io', 'Upstash Redis', 'Cloudinary'],
+      keyFeatures: [
+        'KNN AI Advisor — personalized destination recommendations across 69 Pakistani locations',
+        'Geo-tagged map stories, live weather dashboard & travel wishlist',
+        'JWT auth, Cloudinary media uploads, Redis caching with MongoDB fallback',
+        'Collaborative journeys, achievement badges & real-time DMs'
+      ]
+    },
+
+
+    {
       id: 1,
       title: 'Asteroid Explorer',
       image: '/portfolio1.png',
